@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.contras {
+    border-top: 2px solid #333;
+    margin-top: 30px;
+  }
+
+.contras h1{
+    margin-top: 30px;
+}
+.con .form_pass{
+    margin-top: 30px;
+}
+
+.form_pass .input-box{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label{
+    color: #333;
+}
+
+.form_pass .input-box input,
+.form_pass .input-box select {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.form_pass .column{
+    display: flex;
+    column-gap: 15px;
+}
+
+.form_pass button{
+    height: 55px;
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 400;
+    background-color: rgb(24, 168, 168);
+}
+
+.form_pass input:hover,
+.form_pass select:hover{
+    box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.form_pass input:focus,
+.form_pass select:focus{
+    border: 3px solid rgb(24, 168, 168);
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(134, 198, 235, 0.6);
+}
+
+button:hover{
+    background-color: rgb(18, 129, 129);
+    box-shadow: 3px 0px 30px rgba(134, 198, 235, 0.6);
+}
+
+@media(max-width: 800px) {
+    .form_pass .column{
+        flex-wrap: wrap;
+    }
+}

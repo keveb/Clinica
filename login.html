@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="style/estilo.css">
+    <title>LOGIN</title>
+</head>
+<body>
+     <div class="container" id="container">
+
+    <div class="form-container login-container">
+      <form action="php/ingresar.php" method="post">
+        <h1>Ingresar</h1>
+        <input type="text" name="usuario_i" placeholder="Usuario">
+        <input type="password" name="contra_i" id="contra_i" placeholder="Contraseña">
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label>Recuerdame</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">Olvidaste la contraseña?</a>
+          </div>
+        </div>
+        <button type="submit">Ingresar</button>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1 class="title">La medicina<br> salva tu salud</h1>
+          <p>Ingresa si tienes cuenta.</p>
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

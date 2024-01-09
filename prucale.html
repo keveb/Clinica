@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Horarios Citas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+  <script>
+    // Obtener el valor de la cookie "usuario"
+    var usuario = getCookie("usuario");
+    if (!usuario) {
+      // Redirigir a la página de inicio de sesión
+      window.location.href = "index.html";
+    }
+
+    function getCookie(name) {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+          return cookie.substring(name.length + 1);
+        }
+      }
+      return '';
+    }
+    
+    $(document).ready(function() {
+      // Inicializa el calendario dentro del contenedor con ID "calendar"
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        defaultView: 'month',
+        editable: false,
+        eventLimit: true, // Permite mostrar más eventos en un día
+        events: "php/obtener_eventos.php?usuario="+usuario // Ruta a tu script PHP que obtiene los eventos
+      });
+    });
+  </script>
+  <style>
+    #calendar {
+      position: absolute;
+    max-width: 900px;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Mantén el mismo ID para el contenedor del calendario -->
+  <div id="calendar"></div>
+
+</body>
+</html>

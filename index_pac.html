@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Links -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="style/formulario.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="style/menu_admin.css">
+  <link rel="stylesheet" href="style/modal_cita.css">
+  <title>Paciente</title>
+  <link rel="icon" href="Imagenes/Logo.png" type="image/png">
+  <script src="scripts/sesion_pac.js"></script>
+  <style>
+    /* Estilos para el loader */
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 9999;
+    }
+
+    #loader img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <img src="Imagenes/Logo.png" alt="Cargando...">
+  </div>
+<div class="sidebar close">
+  <div class="logo-details">
+    <i><img src="Imagenes/Logo.png" style="width: 50px; height: 50px;"></i>
+    <span class="logo_name" style='color:#080808'>Clinica</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bxs-home-heart'></i>
+          <span class="link_name" href="#" onclick="cargarPagina('saludpac.html')">Inicio</span>
+        </a>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" id="automatico" href="#" onclick="cargarPagina('saludpac.html')">Inicio</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bxs-user-circle'></i>
+          <span class="link_name" href="#" onclick="cargarPagina('mis_datos.html')">Mi perfil</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#" onclick="cargarPagina('mis_datos.html')">Mi perfil</a></li>
+        <li><a href="#" onclick="cargarPagina('historial_paciente.html')">Historiales</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-calendar-plus'></i>
+          <span class="link_name">Citas</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#" onclick="cargarPagina('citas_paciente.html')">Citas</a></li>
+        <li><a href="#" onclick="abrirModal()">Nueva Cita</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="profile-details">
+        <div class="profile-content">
+          <img src="Imagenes/IMG_pacientes.png" alt="profileImg">
+        </div>
+        <div class="name-job">
+          <div class="profile_name"></div>
+          <div class="job">Bienvenido</div>
+        </div>
+        <i style="color: white;" class='bx bx-log-out' onclick="cerrarSesion()"></i>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx bx-menu'></i>
+    <span class="text">Menú</span>
+  </div>
+  <!-- Se carga los html externos -->
+  <div class="formu" id="main">
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+        <h3 class="h1cita">Cita Médica</h3>
+        <form action="" class="form" method="post" id="form">
+                
+            <div class="column">
+                <div class="input-box">
+                  <label><i class="bx bxs-user"></i> CURP</label>
+                  <input type="text" name="CURP" id="Curp" autocomplete="off" readonly="readonly">
+                </div>
+
+                <div class="input-box">
+                  <label><i class="bx bxs-first-aid"></i> Especialidad</label>
+                  <select name="Especialidad" id="especialidades" required>
+                      <option value="">Seleccione una Especialidad</option>
+                  </select>
+                </div>
+                <!-- Agrega un input para mostrar el IDasignado -->
+<input type="hidden" id="idasignado" name="idasignado" readonly>
+
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class="bx bxs-calendar"></i> Fecha</label>
+                    <input type="text" name="Fecha" id="fecha" readonly="readonly">
+                </div>
+
+                <div class="input-box">
+                    <label><i class="bx bxs-time"></i> Hora</label>
+                    <input type="text" id="hora" name="Hora">
+                </div>
+            </div>
+            <button id="submitBtn">Crear Cita</button>
+        </form>
+  </div>
+</div>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function() {
+  // Inicializar el DatePicker en el campo de entrada de fecha
+  $('#fecha').datepicker({
+    dateFormat: 'yy-mm-dd', // Formato de fecha
+    minDate: 0, // Restringir fechas anteriores a la actual
+  });
+
+  flatpickr("#hora", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "h:i K",
+    time_24hr: false,
+    // Rango de horas permitido
+    minTime: "09:00",
+    maxTime: "20:00",
+    // Omitir horas específicas
+    disable: [
+      "13:00"
+    ],
+    minuteIncrement: 30 // Configura los minutos para incrementarse en 30 minutos
+  });
+});
+
+    </script>
+    <script src="scripts/ver_depto.js"></script>
+    <script src="scripts/cita_pac.js"></script>
+<script src="scripts/menu.js"></script>
+<script src="scripts/carga.js"></script>
+</body>
+</html>

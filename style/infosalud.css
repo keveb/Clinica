@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.h1salud{
+  text-align: center;
+}
+.containersalud {
+  position: absolute;
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionsalud {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sectionsalud:hover {
+  background-color: #4bb6b7;
+  color: #fff;
+}
+
+.sectionsalud img {
+  flex-basis: 60%;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.sectionsalud img:hover {
+  filter: brightness(110%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.sectionsalud:nth-child(even) {
+  flex-direction: row-reverse;
+  background-color: #fff;
+}
+
+.sectionsalud:nth-child(even):hover {
+  background-color: #4bb6b7;
+  color: #fff;
+}
+
+.sectionsalud .h2salud {
+  margin-top: 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.sectionsalud .psalud {
+  flex-basis: 40%;
+  margin: 0 20px;
+  font-size: 18px;
+  text-align: justify;
+}

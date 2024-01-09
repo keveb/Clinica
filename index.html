@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica</title>
+    <link rel="icon" href="Imagenes/Logo.png" type="image/png">
+    <link rel="stylesheet" href="style/menu.css" async>
+    <link rel="stylesheet" href="style/cargas.css" async>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="scripts/carga.js"></script>
+</head>
+<body class="cuerpo">
+    <header class="header">
+        <div class="logo"><img src="Imagenes/Logo.png" style="width: 50px; height: 50px;"></div>
+        <input type="checkbox" id="toggle">
+        <label for="toggle" class="icons">
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <i class="bx bx-x" id="close-icon"></i>
+        </label>
+        <nav class="navigation">
+            <ul>
+                <li><a id="automatico" href="#" onclick="cargarPagina('inicio.html')"><i class="bx bxs-home"></i> Inicio</a></li>
+                <li><a href="#" onclick="cargarPagina('nosotros.html')"><i class="bx bxs-user"></i> Nosotros</a></li>
+                <li><a href="#"> <i class="bx bxs-ambulance"></i> Servicios</a>  
+                    <ul>
+                        <li><a href="#" onclick="cargarPagina('nosotros.html#contacto')"><i class="bx bxs-contact"></i> Directorio Médico</a></li>
+                        <li><a href="#" onclick="cargarPagina('servicios.html#services')"><i class="bx bxs-buildings"></i> Especialidades</a></li>
+                    </ul>
+                </li>
+                <li><a href="login.html"><i class="bx bxs-log-in"></i> Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <main>
+        <div id="loader">
+            <img src="Imagenes/Logo.png" alt="Cargando...">
+          </div>
+        <div id="main"></div>
+    </main>   
+</body>
+</html>

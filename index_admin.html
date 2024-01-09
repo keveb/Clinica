@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style/menu_admin.css">
+    <script src="scripts/sesion_admin.js"></script>
+    <style>
+      /* Estilos para el loader */
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 9999;
+    }
+
+    #loader img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    </style>
+    <title>Administrador</title>
+   </head>
+<body>
+  <div id="loader">
+    <img src="Imagenes/Logo.png" alt="Cargando...">
+  </div>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i> <img src="Imagenes/Logo.png" style="width: 50px; height: 50px;"></i>
+      <span class="logo_name"style='color:#080808'>Clinica</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bxs-home-heart'></i>
+            <span class="link_name">Inicio</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" id="automatico" href="#" onclick="cargarPagina('totales.html')">Inicio</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bxs-user-plus'></i>
+            <span class="link_name">Registrar</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Registrar</a></li>
+          <li><a href="#" onclick="cargarPagina('form_admin.html')">Administradores</a></li>
+          <li><a href="#" onclick="cargarPagina('form_especialidad.html')">Especialidades</a></li>
+          <li><a href="#" onclick="cargarPagina('form_doctores.html')">Doctores</a></li>
+          <li><a href="#" onclick="cargarPagina('form_pacientes.html')">Pacientes</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+        <a href="#">
+          <i class='bx bxs-contact' ></i>
+          <span class="link_name">Modificar</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Modificar</a></li>
+          <li><a href="#" onclick="cargarPagina('modificar_doctores.html')">Doctores</a></li>
+          <li><a href="#" onclick="cargarPagina('modificar_pacientes.html')">Pacientes</a></li>
+        </ul>
+      </li>
+    <li>
+      <div class="profile-details">
+        <div class="profile-content">
+          <img src="Imagenes/admin.jpg" alt="profileImg">
+        </div>
+        <div class="name-job">
+          <div class="profile_name"></div>
+          <div class="job">Bienvenido</div>
+        </div>
+        <i style="color: white;" class='bx bx-log-out'  onclick="cerrarSesion()"></i>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </li>
+  </li>
+</ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      <span class="text">Menú</span>
+    </div>
+    <!-- Se carga los html externos -->
+    <div class="formu"  id="main"></div>
+  </section>
+  <script src="scripts/menu.js"></script>
+  <script src="scripts/carga.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/formulario.css">
+    <link rel="stylesheet" href="style/tabla.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="scripts/info_doc.js"></script>
+    <script src="scripts/registra_diagnostico.js"></script>
+</head>
+
+<body class="body">
+    <section class="con">
+        <h1>Registro de Historiales</h1>
+        <form action="" class="form" method="post" id="form">
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-user-check'></i> CURP del paciente</label>
+                    <input type="text" name="curp" id="curp" autocomplete="off" onblur="consultarPaciente()" oninput="convertToUppercase(this)">
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-user-check'></i> Nombre del paciente</label>
+                    <input type="text" name="nombres" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-user-check'></i> Apellidos del paciente</label>
+                    <input type="text" name="apellidos" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-message-square-edit'></i> Edad del paciente</label>
+                    <input type="number" name="edad" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-envelope'></i> Correo del paciente</label>
+                    <input type="email" name="correo" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-phone'></i> Teléfono del paciente</label>
+                    <input type="tel" name="telefono" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bx-rename'></i> Peso del paciente</label>
+                    <input type="number" name="peso" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bx-body'></i> Altura del paciente</label>
+                    <input type="number" name="altura" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-thermometer'></i> Temperatura del paciente</label>
+                    <input type="number" name="temp" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bx-revision'></i> Antecedentes familiares</label>
+                    <input type="text" name="antecedentes" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bx-health'></i> Alergias del paciente</label>
+                    <input type="text" name="alergias" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-virus'></i> Enfermedades del paciente</label>
+                    <input type="text" name="enfermedades" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class="bx bx-handicap"></i> Discapacidades del paciente</label>
+                    <input type="text" name="disc" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bx-droplet'></i> Síntomas del paciente</label>
+                    <input type="text" name="sintomas" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-file'></i> Antecedentes no patológicos</label>
+                    <input type="text" name="antecNoPato" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bx-medical'></i> Tratamientos activos</label>
+                    <input type="text" name="tratamientosAct" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label><i class='bx bxs-user'></i> Nombre del doctor</label>
+                    <input type="text" name="nombresDoc" id="nombresDoc" readonly>
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-user'></i> Apellidos del doctor</label>
+                    <input type="text" name="apellidosDoc" id="apellidosDoc" readonly>
+                </div>
+
+                <div class="input-box">
+                    <label><i class='bx bxs-id-card'></i> Número de cédula del doctor</label>
+                    <input type="text" name="cedulaDoc" id="cedulaDoc" readonly>
+                </div>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
+    <script>
+        function consultarPaciente() {
+            // Obtener el valor del CURP ingresado
+            var curp = document.getElementById("curp").value;
+    
+            // Realiza una solicitud AJAX al servidor para obtener los datos del paciente
+            $.ajax({
+                type: "POST",
+                url: "php/consulta_paciente.php",
+                data: { curp: curp },
+                dataType: "json",
+                success: function (response) {
+                    // Llenar automáticamente los campos del formulario con los datos del paciente
+                    document.getElementsByName("nombres")[0].value = response.nombresPac;
+                    document.getElementsByName("apellidos")[0].value = response.apellidosPac;
+                    document.getElementsByName("edad")[0].value = response.edadPac;
+                    document.getElementsByName("correo")[0].value = response.correoPac;
+                    document.getElementsByName("telefono")[0].value = response.telefonoPac;
+                },
+                error: function (error) {
+                    console.error("Error al consultar el paciente: " + error.responseText);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="scripts/mis_datos_doctor.js"></script>
+  <link rel="stylesheet" href="style/misdatos_tabla.css">
+  <link rel="stylesheet" href="style/formulario_pass.css">
+  <script src="scripts/cambiar_pass_doc.js"></script>
+  <title>Mis Datos</title>
+</head>
+<body>
+  <section class="contabla">
+  <div >
+    <h1>Datos Personales</h1>
+    <table>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <th class="btn"><i class='bx bxs-user-circle'></i><strong>CURP</strong></th>
+              <td id="curp"><strong><X/strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-user'></i><strong>Nombre</strong></th>
+              <td id="nombre_usuario"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-user'></i><strong>Apellidos</strong></th>
+              <td id="apellidos"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-calendar'></i><strong>Edad</strong></th>
+              <td id="edad"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-id-card'></i><strong>Cédula</strong></th>
+              <td id="cedula"><strong></strong></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <th class="btn"><i class='bx bxs-envelope'></i><strong>Correo Electrónico</strong></th>
+              <td id="correo_electronico"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-phone'></i><strong>Teléfono</strong></th>
+              <td id="telefono"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-map'></i><strong>Dirección</strong></th>
+              <td id="direccion"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-calendar'></i><strong>Fecha de Registro</strong></th>
+              <td id="fecha_registro"><strong></strong></td>
+            </tr>
+            <tr>
+              <th class="btn"><i class='bx bxs-first-aid'></i><strong>Especialidad</strong></th>
+              <td id="especialidad"><strong></strong></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div class="contras">
+      <h1>Cambiar Contraseña</h1>
+      <form action="" class="form_pass" method="post" id="form_pass">
+          <div class="column">
+              <div class="input-box">
+                  <label for=""><i class="bx bxs-lock"></i> Nueva Contraseña</label>
+                  <input type="password" name="nueva-pass" autocomplete="off">
+              </div>
+              <div class="input-box">
+                  <label for=""><i class="bx bxs-lock"></i> Confirmar Contraseña</label>
+                  <input type="password" name="confirmar-pass" autocomplete="off">
+              </div>
+          </div>
+          <p>* Recuerda que tu nueva contraseña debe incluir al menos una mayúscula, un número y un signo de puntuación o carácter especial.</p>
+          <button type="submit">Cambiar</button>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>

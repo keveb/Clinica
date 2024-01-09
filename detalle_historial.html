@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Imagenes/Logo.png" type="image/png">
+    <title>Expediente Médico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Imagenes/Logo.png" alt="Logo">
+        <h1>Expediente Médico</h1>
+    </header>
+
+    <section>
+        <h2>Información del Paciente</h2>
+        <table>
+            <tr>
+                <th>CURP</th>
+                <td id="curp"></td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td id="nombre"></td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td id="apellidos"></td>
+            </tr>
+            <!-- Agrega más detalles del paciente aquí -->
+        </table>
+    </section>
+
+    <section>
+        <h2>Detalles Médicos</h2>
+        <table>
+            <tr>
+                <th>Fecha del Historial</th>
+                <td id="fechaHistorial"></td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td id="edad"></td>
+            </tr>
+            <tr>
+                <th>Correo Electrónico</th>
+                <td id="correo"></td>
+            </tr>
+            <tr>
+                <th>Teléfono</th>
+                <td id="telefono"></td>
+            </tr>
+            <tr>
+                <th>Altura</th>
+                <td id="altura"></td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td id="peso"></td>
+            </tr>
+            <tr>
+                <th>Temperatura</th>
+                <td id="temperatura"></td>
+            </tr>
+            <!-- Agrega más detalles médicos aquí -->
+        </table>
+    </section>
+
+    <section>
+        <h2>Antecedentes Familiares</h2>
+        <p id="antecedentesFam"></p>
+    </section>
+
+    <section>
+        <h2>Alergias</h2>
+        <p id="alergias"></p>
+    </section>
+
+    <!-- Agrega más secciones según sea necesario -->
+
+    <section>
+        <h2>Datos del Doctor</h2>
+        <table>
+            <tr>
+                <th>Nombres del Doctor</th>
+                <td id="nombresDoc"></td>
+            </tr>
+            <tr>
+                <th>Apellidos del Doctor</th>
+                <td id="apellidosDoc"></td>
+            </tr>
+            <tr>
+                <th>Cédula Profesional del Doctor</th>
+                <td id="cedulaDoc"></td>
+            </tr>
+        </table>
+    </section>
+
+    <button id="btnGuardarPDF" onclick="guardarComoPDF()">Guardar Expediente como PDF</button>
+
+    <script>
+        var detalleHistorial = JSON.parse(sessionStorage.getItem('detalleHistorial'));
+
+        // Actualizar elementos HTML con los detalles del historial
+        document.getElementById('curp').textContent = detalleHistorial.CurpPac;
+        document.getElementById('nombre').textContent = detalleHistorial.nombresPac;
+        document.getElementById('apellidos').textContent = detalleHistorial.apellidosPac;
+        document.getElementById('fechaHistorial').textContent = detalleHistorial.fechaHistorial;
+        document.getElementById('edad').textContent = detalleHistorial.edadPac;
+        document.getElementById('correo').textContent = detalleHistorial.correoPac;
+        document.getElementById('telefono').textContent = detalleHistorial.telefonoPac;
+        document.getElementById('altura').textContent = detalleHistorial.AlturaPac;
+        document.getElementById('peso').textContent = detalleHistorial.Peso;
+        document.getElementById('temperatura').textContent = detalleHistorial.Temperatura;
+        document.getElementById('antecedentesFam').textContent = detalleHistorial.AntecedentesFam;
+        document.getElementById('alergias').textContent = detalleHistorial.Alergias;
+        document.getElementById('nombresDoc').textContent = detalleHistorial.nombresDoc;
+        document.getElementById('apellidosDoc').textContent = detalleHistorial.apellidosDoc;
+        document.getElementById('cedulaDoc').textContent = detalleHistorial.cedulaDoc;
+
+        function guardarComoPDF() {
+            // Ocultar el botón antes de generar el PDF
+            document.getElementById('btnGuardarPDF').style.display = 'none';
+
+            // Generar el PDF y después mostrar el botón nuevamente
+            window.print();
+            setTimeout(function() {
+                document.getElementById('btnGuardarPDF').style.display = 'block';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
+
+

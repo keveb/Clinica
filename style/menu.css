@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*,
+*::before,
+*:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+.cuerpo{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: url('../Imagenes/Fondo_Index.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.header{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.logo{
+    font-size: 25px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+}
+
+#main {
+    position: relative;
+    z-index: 1;
+  }
+
+
+.navigation ul{
+    list-style: none;
+}
+
+.header .navigation ul li{
+    float: left;
+    position: relative;
+}
+
+.header .navigation ul li a{
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 20px;
+    display: block;
+    transition: all .2s ease;
+}
+
+.header .navigation ul li a:hover{
+    color: cyan;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #33ffff, 0 0 5px #66ffff;
+}
+
+.header .navigation ul li ul{
+    position: absolute;
+    right: 10;
+    width: 220px;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    display: none;
+}
+
+.header .navigation ul li ul li a{
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.header .navigation ul li ul li ul{
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+.header .navigation ul li ul li{
+    width: 100%;
+}
+
+.header .navigation ul li:hover > ul{
+    display: initial;
+}
+
+#toggle,
+.header label{
+    display: none;
+    cursor: pointer;
+}
+
+.icons{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 800px){
+    .header label{
+        display: initial;
+    }
+    .icons{
+        display: inline-flex;
+    }
+    #toggle:checked~.icons #menu-icon{
+        display: none;
+    }
+
+    #toggle:checked~.icons #close-icon{
+        display: block;
+    }
+    
+    .icons #close-icon{
+        display: none;
+    }
+
+    .header{
+        padding: 20px 10%;
+    }
+
+    .header .navigation{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        display: none;
+    }
+
+    .header .navigation ul li{
+        width: 100%;
+    }
+
+    .header .navigation ul li a{
+        padding: 8px 30px 8px 10%;
+    }
+
+    .header .navigation ul li ul{
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+
+    .header .navigation ul li ul li{
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+    }
+
+    #toggle:checked ~ .navigation{
+        display: block;
+    }
+}
